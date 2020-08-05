@@ -33,6 +33,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- Web-Fonts -->
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 	<!-- //Web-Fonts -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 	<!-- header -->
@@ -157,7 +158,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		   <p class="subs mt-4 text-center">PH : 8086853909</p>
 		   
 			<div class="contact_grid_right mt-5 mx-auto text-center">
-				<form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbyq2LhcvO8lc1BpO84aPE0grX335CAvNzoOrBLp-g/exec">
+				<form id="submit-form" method="POST" action="">
 					<div class="row contact_top">
 						<div class="col-sm-6">
 							<input type="text" name="Name" placeholder="Name" required="">
@@ -194,6 +195,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	</section>
 	 <!-- //contact -->
+<script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbyq2LhcvO8lc1BpO84aPE0grX335CAvNzoOrBLp-g/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
 
 </body>
 </html>
